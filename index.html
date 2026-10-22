@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A beginner-friendly Machine Learning blog explaining Linear Regression with examples, formulas, and interactive predictions.">
+  <title>ML Bloom | Linear Regression Made Simple</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="ML Bloom home">
+      <span class="brand-icon">✿</span>
+      <span><strong>ML Bloom</strong><small>LEARN · BUILD · GROW</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#intro">Learn</a>
+      <a href="#example">Example</a>
+      <a href="#quiz">Mini Quiz</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="header-cta" href="#learn">Start learning ↗</a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div>
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="spark">✦</span> MACHINE LEARNING · BEGINNER GUIDE</span>
+        <h1>Linear Regression,<br><em>made simple.</em></h1>
+        <p>Turn a collection of data points into a useful prediction — one straight line at a time.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#intro">Explore the blog <span>↓</span></a>
+          <a class="text-link" href="#example">See a real example ↗</a>
+        </div>
+        <div class="hero-note"><span class="note-dot"></span> No scary maths. Just clear ideas.</div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of data points and a regression line">
+        <div class="chart-card">
+          <div class="chart-top"><span>THE BIG IDEA</span><span class="chart-tag">01 / 04</span></div>
+          <svg viewBox="0 0 420 290" role="img" aria-label="Scatter plot with a line of best fit">
+            <defs>
+              <linearGradient id="lineGradient" x1="0" x2="1"><stop offset="0%" stop-color="#ff9fba"/><stop offset="100%" stop-color="#f7d6ff"/></linearGradient>
+            </defs>
+            <g stroke="#ffffff" stroke-opacity=".13" stroke-width="1">
+              <path d="M45 35V235M105 35V235M165 35V235M225 35V235M285 35V235M345 35V235"/>
+              <path d="M45 55H375M45 100H375M45 145H375M45 190H375M45 235H375"/>
+            </g>
+            <path d="M45 25V235H385" fill="none" stroke="#d9d5ff" stroke-width="2"/>
+            <path d="M45 25l-6 10m6-10l6 10M385 235l-10-6m10 6l-10 6" fill="none" stroke="#d9d5ff" stroke-width="2"/>
+            <g fill="#9de7ed">
+              <circle cx="72" cy="205" r="5"/><circle cx="91" cy="181" r="5"/><circle cx="112" cy="194" r="5"/>
+              <circle cx="128" cy="161" r="5"/><circle cx="151" cy="173" r="5"/><circle cx="167" cy="142" r="5"/>
+              <circle cx="184" cy="153" r="5"/><circle cx="199" cy="121" r="5"/><circle cx="218" cy="133" r="5"/>
+              <circle cx="236" cy="101" r="5"/><circle cx="256" cy="112" r="5"/><circle cx="273" cy="82" r="5"/>
+              <circle cx="294" cy="92" r="5"/><circle cx="311" cy="65" r="5"/><circle cx="337" cy="72" r="5"/>
+              <circle cx="355" cy="45" r="5"/>
+            </g>
+            <path d="M61 213L361 43" stroke="url(#lineGradient)" stroke-width="5" stroke-linecap="round"/>
+            <text x="25" y="18" fill="#e4ddff" font-size="15">y</text><text x="394" y="248" fill="#e4ddff" font-size="15">x</text>
+            <rect x="215" y="183" width="143" height="30" rx="15" fill="#f5d5ff"/>
+            <text x="286" y="202" text-anchor="middle" fill="#38265f" font-size="11" font-weight="700">LINE OF BEST FIT</text>
+          </svg>
+          <div class="chart-caption"><span><i class="legend-dot"></i> Observed data</span><span><i class="legend-line"></i> Model prediction</span></div>
+        </div>
+        <div class="floating-sticker sticker-a">small steps<br><b>big insights ✨</b></div>
+        <div class="floating-sticker sticker-b">data → patterns → predictions</div>
+      </div>
+      <div class="hero-bottom"><span>SCROLL TO DISCOVER</span><span class="scroll-line"></span><span>5 MIN READ</span></div>
+    </section>
+
+    <section class="stats-strip" aria-label="Blog highlights">
+      <div><strong>01</strong><span>Core concept</span></div>
+      <div><strong>02</strong><span>Types explained</span></div>
+      <div><strong>03</strong><span>Worked example</span></div>
+      <div><strong>04</strong><span>Try a prediction</span></div>
+    </section>
+
+    <div class="content-layout" id="learn">
+      <aside class="sidebar">
+        <div class="side-card toc">
+          <div class="side-title"><span>✦</span> IN THIS BLOG</div>
+          <a href="#intro"><b>01</b> Introduction</a>
+          <a href="#what"><b>02</b> What is it?</a>
+          <a href="#types"><b>03</b> Types</a>
+          <a href="#steps"><b>04</b> How it works</a>
+          <a href="#formula"><b>05</b> The formula</a>
+          <a href="#example"><b>06</b> Example</a>
+          <a href="#pros-cons"><b>07</b> Pros & limits</a>
+          <a href="#quiz"><b>08</b> Mini quiz</a>
+        </div>
+        <div class="side-quote">
+          <span class="quote-mark">“</span>
+          <p>Behind every good prediction is a pattern waiting to be found.</p>
+          <span class="quote-spark">✦ ✦ ✦</span>
+        </div>
+        <div class="side-card author-card" id="about">
+          <div class="avatar">ML</div>
+          <div><strong>ML Bloom Notes</strong><p>A student-friendly guide to machine learning concepts.</p></div>
+        </div>
+      </aside>
+
+      <article class="blog-article">
+        <div class="article-meta"><span class="pill">MACHINE LEARNING</span><span>✦</span><span>Beginner friendly</span><span class="meta-right">☕ 5 min read</span></div>
+        <section class="article-section" id="intro">
+          <div class="section-kicker">LET'S START HERE</div>
+          <h2>01. Introduction <span class="heading-flower">✿</span></h2>
+          <p>Imagine you know the size of a house and want to estimate its price. Or you know how many hours a student studies and want to estimate their marks. <strong>Linear Regression</strong> helps us make these kinds of predictions by learning the relationship between variables.</p>
+          <div class="callout lavender"><span class="callout-icon">💡</span><div><strong>The idea in one line</strong><p>Use existing data to find a straight line that best describes a relationship, then use that line to predict a new value.</p></div></div>
+        </section>
+
+        <section class="article-section" id="what">
+          <div class="section-kicker">THE BASICS</div>
+          <h2>02. What is Linear Regression?</h2>
+          <p>Linear Regression is a <strong>supervised machine learning algorithm</strong> used to predict a continuous numerical value. It studies how an output (the target) changes when one or more inputs (features) change.</p>
+          <div class="two-cards">
+            <div class="mini-card pink"><span class="mini-icon">📥</span><h3>Input / Feature (X)</h3><p>The information we know, such as house area or study hours.</p></div>
+            <div class="mini-card mint"><span class="mini-icon">🎯</span><h3>Output / Target (Y)</h3><p>The number we want to estimate, such as price or exam marks.</p></div>
+          </div>
+          <p class="small-note">Think of it as drawing the most useful straight line through a cloud of dots.</p>
+        </section>
+
+        <section class="article-section" id="types">
+          <div class="section-kicker">TWO COMMON TYPES</div>
+          <h2>03. Types of Linear Regression</h2>
+          <div class="type-grid">
+            <div class="type-card"><div class="type-number">A</div><h3>Simple Linear Regression</h3><p>Uses <strong>one input feature</strong> to predict an output.</p><div class="example-chip">Example: area → house price</div></div>
+            <div class="type-card"><div class="type-number">B</div><h3>Multiple Linear Regression</h3><p>Uses <strong>two or more input features</strong> to predict an output.</p><div class="example-chip">Example: area + rooms → price</div></div>
+          </div>
+        </section>
+
+        <section class="article-section" id="steps">
+          <div class="section-kicker">FROM DATA TO PREDICTION</div>
+          <h2>04. How does it work?</h2>
+          <div class="steps">
+            <div class="step"><span>1</span><div><strong>Collect the data</strong><p>Gather examples with known inputs and outputs.</p></div></div>
+            <div class="step"><span>2</span><div><strong>Fit the best line</strong><p>The algorithm finds a line that stays close to the observed points.</p></div></div>
+            <div class="step"><span>3</span><div><strong>Measure the errors</strong><p>Compare predicted values with actual values and reduce the overall error.</p></div></div>
+            <div class="step"><span>4</span><div><strong>Predict a new value</strong><p>Enter a new input and use the learned line to estimate its output.</p></div></div>
+          </div>
+        </section>
+
+        <section class="article-section" id="formula">
+          <div class="section-kicker">A LITTLE MATH</div>
+          <h2>05. The formula</h2>
+          <div class="formula-box"><span class="formula-label">SIMPLE LINEAR REGRESSION</span><div class="formula">ŷ = b₀ + b₁x</div><p>Predicted output = intercept + (slope × input)</p></div>
+          <div class="definition-list">
+            <div><span class="definition-symbol">ŷ</span><p><strong>Predicted value</strong><br>The output estimated by the model.</p></div>
+            <div><span class="definition-symbol">b₀</span><p><strong>Intercept</strong><br>The predicted value when x is zero.</p></div>
+            <div><span class="definition-symbol">b₁</span><p><strong>Slope</strong><br>How much the prediction changes when x increases by one unit.</p></div>
+            <div><span class="definition-symbol">x</span><p><strong>Input feature</strong><br>The value supplied to the model.</p></div>
+          </div>
+          <p class="small-note">The model commonly chooses its line by minimising the sum of squared differences between actual and predicted values. This is called <strong>Ordinary Least Squares (OLS)</strong>.</p>
+        </section>
+
+        <section class="article-section" id="example">
+          <div class="section-kicker">LET'S MAKE IT REAL</div>
+          <h2>06. A house-price example</h2>
+          <p>Suppose a simplified example dataset shows that each extra 500 sq. ft. is associated with an increase of ₹25 lakh. The table below is <strong>illustrative practice data</strong>, not a real property-market dataset.</p>
+          <div class="table-wrap">
+            <table><thead><tr><th>Area (sq. ft.)</th><th>Example price (₹ lakh)</th></tr></thead><tbody><tr><td>1,000</td><td>50</td></tr><tr><td>1,500</td><td>75</td></tr><tr><td>2,000</td><td>100</td></tr><tr><td>2,500</td><td>125</td></tr></tbody></table>
+          </div>
+          <div class="prediction-box">
+            <div><span class="prediction-label">INTERACTIVE PREDICTION</span><h3>What might a 3,000 sq. ft. house cost?</h3><p>Move the slider to explore the example relationship.</p></div>
+            <div class="slider-area"><label for="areaSlider">House area <strong id="areaValue">3,000</strong> sq. ft.</label><input id="areaSlider" type="range" min="1000" max="3500" step="500" value="3000"><div class="range-labels"><span>1,000</span><span>3,500 sq. ft.</span></div><div class="prediction-result"><span>Illustrative estimate</span><strong>₹ <span id="priceValue">150</span> lakh</strong></div></div>
+          </div>
+          <p class="small-note">This neat pattern is intentionally simplified for learning. Real prices also depend on location, age, amenities, demand and many other factors.</p>
+        </section>
+
+        <section class="article-section" id="pros-cons">
+          <div class="section-kicker">A BALANCED VIEW</div>
+          <h2>07. Benefits & limitations</h2>
+          <div class="pros-cons">
+            <div class="pro-card"><h3>✓ Why it is useful</h3><ul><li>Easy to understand and explain</li><li>Fast to train on many datasets</li><li>Shows how inputs relate to an output</li><li>Provides a useful baseline model</li></ul></div>
+            <div class="con-card"><h3>! What to watch out for</h3><ul><li>Assumes a linear relationship</li><li>Outliers can affect the fitted line</li><li>Missing or poor-quality data can mislead</li><li>Prediction is not proof of causation</li></ul></div>
+          </div>
+        </section>
+
+        <section class="article-section quiz-section" id="quiz">
+          <div class="section-kicker">CHECK YOUR UNDERSTANDING</div>
+          <h2>08. Mini quiz 🎈</h2>
+          <p>Which type of problem is Linear Regression most commonly used for?</p>
+          <div class="quiz-options" id="quizOptions">
+            <button data-correct="false">A. Predicting whether an email is spam</button>
+            <button data-correct="true">B. Predicting a house price</button>
+            <button data-correct="false">C. Grouping customers without labels</button>
+          </div>
+          <div class="quiz-feedback" id="quizFeedback" aria-live="polite">Choose an answer to see the explanation.</div>
+        </section>
+
+        <div class="takeaway"><span class="takeaway-star">✦</span><div><strong>THE TAKEAWAY</strong><p>Linear Regression learns a relationship from data and uses it to predict a continuous number. Start with a clear question, explore your data, and always check how well your model performs.</p></div></div>
+        <div class="article-footer"><span>Made for curious minds 💜</span><span>#MachineLearning&nbsp; #LinearRegression</span></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home"><span class="brand-icon">✿</span><span><strong>ML Bloom</strong><small>LEARN · BUILD · GROW</small></span></a>
+    <p>Big ideas, explained one small step at a time.</p>
+    <a href="#home" class="back-top">Back to top ↑</a>
+    <small class="copyright">Student learning project · Linear Regression</small>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
